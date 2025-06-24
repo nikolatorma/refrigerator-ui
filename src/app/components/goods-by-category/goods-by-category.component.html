@@ -1,0 +1,10 @@
+<div *ngIf="!isLoading && !error">
+    <div 
+      *ngFor="let good of goods" 
+      class="good-card"
+      (click)="openGoodDialog(good)">
+      <p>{{ good.name }}</p>
+      <small>Quantity: {{ good.quantity }}</small>
+    </div>
+</div>
+  

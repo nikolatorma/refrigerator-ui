@@ -1,59 +1,90 @@
-# RefrigeratorUi
+🧊 Refrigerator UI
+A responsive Angular 14+ single-page application for managing fridge and freezer inventory, integrated with the Refrigerator API backend.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+📦 Tech Stack
+Angular 14+
 
-## Development server
+RxJS
 
-To start a local development server, run:
+Angular Material (optional)
 
-```bash
+TypeScript
+
+Docker (optional for containerized build)
+
+🚀 Getting Started
+🔧 Prerequisites
+Node.js (v18+ recommended)
+
+Angular CLI
+
+📦 Install Dependencies
+bash
+Copy
+Edit
+npm install
+🖥️ Run the Application
+bash
+Copy
+Edit
 ng serve
-```
+Visit: http://localhost:4200
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+🌐 API Backend
+This app expects a running instance of the Refrigerator API backend.
 
-## Code scaffolding
+Backend API URL is typically:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+bash
+Copy
+Edit
+http://localhost:8080/api/goods
+If different, update the environment.ts file accordingly:
 
-```bash
-ng generate component component-name
-```
+typescript
+Copy
+Edit
+export const environment = {
+  apiUrl: 'http://localhost:8080/api'
+};
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+🎨 Features
+List all goods from the refrigerator
 
-```bash
-ng generate --help
-```
+Add, edit, delete fridge items
 
-## Building
+Visual expiration tracking
 
-To build the project run:
+Integrates with backend OpenAPI endpoints
 
-```bash
-ng build
-```
+📸 Screenshots (optional section if you'd like)
+Dashboard	Add Item Form
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+🐳 Docker Support (optional)
+To build and run your Angular frontend in a Docker container:
 
-## Running unit tests
+Build the production app:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+bash
+Copy
+Edit
+ng build --prod
+Use a simple Nginx-based Dockerfile:
 
-```bash
-ng test
-```
+dockerfile
+Copy
+Edit
+FROM nginx:alpine
+COPY ./dist/refrigerator-ui /usr/share/nginx/html
+Build & run:
 
-## Running end-to-end tests
+bash
+Copy
+Edit
+docker build -t refrigerator-ui .
+docker run -d -p 4200:80 refrigerator-ui
+📃 License
+No license — all rights reserved.
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+📬 Contact
+Nikola Torma — GitHub

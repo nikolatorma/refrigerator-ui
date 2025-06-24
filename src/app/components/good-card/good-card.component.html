@@ -1,0 +1,9 @@
+<div class="card">
+    <img [src]="good.icon" alt="{{ good.name }}" />
+    <h3>{{ good.name }}</h3>
+    <p>Location: {{ good.location }}</p>
+    <p>Quantity: {{ good.quantity }}</p>
+    <p>Stored: {{ good.storedDate | date }}</p>
+    <p>Expires: {{ good.bestBeforeDate | date }}</p>
+  </div>
+  

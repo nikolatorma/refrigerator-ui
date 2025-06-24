@@ -1,0 +1,29 @@
+<form [formGroup]="goodForm" (ngSubmit)="onSave()">
+    <label>Name:</label>
+    <input type="text" formControlName="name" />
+    <br />
+  
+    <label>Location:</label>
+    <input type="text" formControlName="location" />
+    <br />
+  
+    <label>Quantity:</label>
+    <input type="number" formControlName="quantity" />
+    <br />
+  
+    <label>Date Stored:</label>
+    <input type="date" formControlName="dateStored" />
+    <br />
+  
+    <label>Best Before:</label>
+    <input type="date" formControlName="bestBefore" />
+    <br />
+  
+    <label>Icon:</label>
+    <input type="text" formControlName="icon" />
+    <br />
+  
+    <button type="submit">Save</button>
+    <button type="button" (click)="onDelete()">Delete</button>
+  </form>
+  

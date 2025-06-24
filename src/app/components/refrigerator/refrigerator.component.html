@@ -1,0 +1,29 @@
+<div *ngIf="!isLoading && !error && fridgeItems.length === 0" class="empty-fridge">
+    <div class="empty-fridge-container">
+      <p>Your fridge is empty.</p>
+    </div>
+    <button class="add-category-btn" (click)="showCategories()">+</button>
+</div>
+  
+  <!-- Show categories if fridge is empty -->
+  <div *ngIf="showCategoryList" class="category-list">
+    <div *ngFor="let category of categories" class="category-item" (click)="getGoodsByCategory(category.id)">
+      <p>{{ category.name }}</p>
+    </div>
+  </div>
+  
+  <!-- Display fridge items when they exist -->
+  <div *ngIf="!isLoading && !error && fridgeItems.length > 0" class="fridge-items">
+    <div *ngFor="let item of fridgeItems" class="fridge-item">
+      <p>{{ item.name }} - {{ item.quantity }} available</p>
+    </div>
+  </div>
+  
+  <!-- Loading indicator -->
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+  
+  <!-- Error message -->
+  <div *ngIf="error" class="error">
+    <p>Error loading items. Please try again later.</p>
+  </div>
+  

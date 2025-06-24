@@ -1,0 +1,40 @@
+name: Angular CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint the app
+        run: npm run lint
+
+      - name: Run unit tests
+        run: npm run test -- --watch=false --browsers=ChromeHeadless
+
+      - name: Build the app
+        run: npm run build --prod
+
+      - name: Archive production build
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
