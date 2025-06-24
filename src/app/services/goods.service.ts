@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Good } from '../models/good';
 import { Observable } from 'rxjs';
@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class GoodsService {
-  private apiUrl = 'http://localhost:8080/api/goods';
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
+  private apiUrl = 'http://localhost:8080/api/goods';
 
   getGoods(): Observable<Good[]> {
     return this.http.get<Good[]>(this.apiUrl);

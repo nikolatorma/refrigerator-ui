@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { GoodsService } from '../../services/goods.service';
@@ -12,13 +12,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./good-dialog.component.css'],
   imports: [CommonModule, ReactiveFormsModule]
 })
-export class GoodDialogComponent {
+export class GoodDialogComponent implements OnInit {
+  private fb = inject(FormBuilder);
+  private goodsService = inject(GoodsService);
+  private dialogRef = inject<MatDialogRef<GoodDialogComponent>>(MatDialogRef);
+  data = inject<Good>(MAT_DIALOG_DATA);
+
   
   @Input() selectedGoodId?: number;
 
   goodForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private goodsService: GoodsService, private dialogRef: MatDialogRef<GoodDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Good) {
+  constructor() {
     this.goodForm = this.fb.group({
       name: ['', Validators.required],
       location: [''],

@@ -2,7 +2,7 @@
     <div 
       class="category-card" 
       *ngFor="let category of categories"
-      (click)="goToGoods(category.id)">
+      (click)="goToGoods(category.id)" tabindex="0" (keydown.enter)="goToGoods(category.id)">
       
       <img [src]="category.icon" alt="{{ category.name }} icon" width="40" height="40">
       <p>{{ category.name }}</p>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GoodsService } from '../../services/goods.service';
 import { Good } from '../../models/good';
@@ -14,17 +14,15 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule]
 })
 export class GoodsByCategoryComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private goodsService = inject(GoodsService);
+  private dialog = inject(MatDialog);
+
 
   categoryId!: number;
   goods: Good[] = [];
   isLoading = false;
   error: string | null = null;
-
-  constructor(
-    private route: ActivatedRoute,
-    private goodsService: GoodsService,
-    private dialog: MatDialog
-  ) {}
 
   ngOnInit(): void {
     this.categoryId = Number(this.route.snapshot.paramMap.get('categoryId'));

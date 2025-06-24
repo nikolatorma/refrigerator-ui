@@ -2,12 +2,12 @@
     <div class="empty-fridge-container">
       <p>Your fridge is empty.</p>
     </div>
-    <button class="add-category-btn" (click)="showCategories()">+</button>
+    <button class="add-category-btn" (click)="showCategories()" tabindex="0" (keydown.enter)="showCategories()">+</button>
 </div>
   
   <!-- Show categories if fridge is empty -->
   <div *ngIf="showCategoryList" class="category-list">
-    <div *ngFor="let category of categories" class="category-item" (click)="getGoodsByCategory(category.id)">
+    <div *ngFor="let category of categories" class="category-item" (click)="getGoodsByCategory(category.id)" tabindex="0" (keydown.enter)="getGoodsByCategory(category.id)">
       <p>{{ category.name }}</p>
     </div>
   </div>

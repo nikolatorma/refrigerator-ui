@@ -2,7 +2,7 @@
     <div 
       *ngFor="let good of goods" 
       class="good-card"
-      (click)="openGoodDialog(good)">
+      (click)="openGoodDialog(good)" tabindex="0" (keydown.enter)="openGoodDialog(good)">
       <p>{{ good.name }}</p>
       <small>Quantity: {{ good.quantity }}</small>
     </div>

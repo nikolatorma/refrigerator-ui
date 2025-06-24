@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FridgeItem } from '../models/fridge-item';
 import { HttpClient } from '@angular/common/http';
@@ -7,10 +7,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FridgeItemService {
+  private http = inject(HttpClient);
 
   private apiUrl = 'http://localhost:8080/api/fridge-items';
-
-  constructor(private http: HttpClient) {}
 
   getFridgeItems(): Observable<FridgeItem[]> {
     return this.http.get<FridgeItem[]>(this.apiUrl);

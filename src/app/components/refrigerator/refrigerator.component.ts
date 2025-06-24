@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GoodCardComponent } from '../good-card/good-card.component';
 import { Good } from '../../models/good';
 import { GoodsService } from '../../services/goods.service';
-import { ShelfComponent } from '../shelf/shelf.component';
 import { FridgeItem } from '../../models/fridge-item';
 import { Category } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
@@ -14,17 +12,19 @@ import { FridgeItemService } from '../../services/fridge-item.service';
   selector: 'app-refrigerator',
   templateUrl: './refrigerator.component.html',
   styleUrls: ['./refrigerator.component.css'],
-  imports: [CommonModule, ShelfComponent, GoodCardComponent]
+  imports: [CommonModule]
 })
 export class RefrigeratorComponent implements OnInit {
+  private goodsService = inject(GoodsService);
+  private categoryService = inject(CategoryService);
+  private fridgeItemService = inject(FridgeItemService);
+
   goods: Good[] = [];
   fridgeItems: FridgeItem[] = [];
   categories: Category[] = [];
-  showCategoryList: boolean = false;
-  isLoading: boolean = false;
-  error: boolean = false;
-
-  constructor(private goodsService: GoodsService, private categoryService: CategoryService, private fridgeItemService: FridgeItemService) {}
+  showCategoryList = false;
+  isLoading = false;
+  error = false;
 
   ngOnInit(): void {
     this.loadGoods();

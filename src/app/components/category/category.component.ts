@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../models/category';
 import { Router } from '@angular/router';
@@ -10,12 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
+  private categoryService = inject(CategoryService);
+  private router = inject(Router);
+
 
   categories: Category[] = [];
   isLoading = false;
   error: string | null = null;
-
-  constructor(private categoryService: CategoryService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchCategories();
@@ -28,7 +29,7 @@ export class CategoryComponent implements OnInit {
         this.categories = data;
         this.isLoading = false;
       },
-      error: (err) => {
+      error: () => {
         this.error = 'Failed to load categories';
         this.isLoading = false;
       }
