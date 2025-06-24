@@ -1,8 +1,8 @@
 🧊 Refrigerator UI
-A responsive Angular 14+ single-page application for managing fridge and freezer inventory, integrated with the Refrigerator API backend.
+A responsive Angular 19 single-page application for managing fridge and freezer inventory, integrated with the Refrigerator API backend.
 
 📦 Tech Stack
-Angular 14+
+Angular 19
 
 RxJS
 
