@@ -10,5 +10,7 @@ import { RefrigeratorComponent } from './components/refrigerator/refrigerator.co
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {}
+export class AppComponent {
+  title = 'refrigerator-ui';
+}
 

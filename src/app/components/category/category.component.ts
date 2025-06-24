@@ -2,12 +2,14 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../models/category';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['./category.component.css'],
+  imports: [CommonModule]
 })
 export class CategoryComponent implements OnInit {
   private categoryService = inject(CategoryService);

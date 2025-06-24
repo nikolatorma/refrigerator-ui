@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShelfComponent } from './shelf.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ShelfComponent', () => {
   let component: ShelfComponent;
@@ -8,7 +9,7 @@ describe('ShelfComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ShelfComponent]
+      imports: [ShelfComponent, HttpClientTestingModule]
     })
     .compileComponents();
 
